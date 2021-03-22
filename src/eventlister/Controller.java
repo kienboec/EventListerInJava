@@ -16,14 +16,11 @@ public class Controller implements Initializable {
     @Autowired
     private MainViewModel _mainViewModel;
 
-    public Controller()
-    {
-
-    }
-
+    // FXML references
     public TextField FilterTextField;
     public ListView EventsListView;
 
+    // Action
     public void filter(ActionEvent actionEvent) {
         _mainViewModel.filter();
     }

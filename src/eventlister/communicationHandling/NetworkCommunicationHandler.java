@@ -11,13 +11,19 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
 @Component
-public class NetworkCommunicationHandler implements CommunicationHandler{
+public class NetworkCommunicationHandler implements CommunicationHandler {
 
     @Autowired
     private ArgumentHandler _argumentHandler;
 
+    private String _cachedContent = null;
+
     @Override
     public String getContent() {
+        if (_cachedContent != null) {
+            return _cachedContent;
+        }
+
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(_argumentHandler.getDataSourceAddress()))
@@ -26,8 +32,7 @@ public class NetworkCommunicationHandler implements CommunicationHandler{
         HttpResponse<String> response = null;
         try {
             response = client.send(request, HttpResponse.BodyHandlers.ofString());
-
-            return response.body();
+            return _cachedContent = response.body();
         } catch (IOException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
