@@ -1,10 +1,9 @@
 package eventlister.argumentHandling;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DefaultArgumentHandler implements ArgumentHandler{
+public class DefaultArgumentHandler implements ArgumentHandler {
     protected final List<String> _filterCriterias = new ArrayList<String>();
     protected final String _dataSourceAddress = "https://www.technikum-wien.at/newsroom/veranstaltungen/";
 

@@ -1,14 +1,11 @@
 package eventlister;
 
-import eventlister.argumentHandling.CommandLineArgumentHandler;
 import eventlister.argumentHandling.CommandLineArgumentStore;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class Main extends Application {
@@ -16,7 +13,7 @@ public class Main extends Application {
     private static AnnotationConfigApplicationContext _context;
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage) throws Exception {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("MainWindow.fxml"));
         loader.setControllerFactory(Controller -> _context.getBean(Controller.class));

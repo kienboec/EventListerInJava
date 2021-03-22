@@ -10,7 +10,7 @@ public class CommandLineArgumentStore {
         return this.args;
     }
 
-    public CommandLineArgumentStore(String[] args){
+    public CommandLineArgumentStore(String[] args) {
         this.args = args;
     }
 }

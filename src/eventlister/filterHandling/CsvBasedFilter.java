@@ -11,8 +11,8 @@ public class CsvBasedFilter implements FilterHandler {
     @Override
     public List<String> Filter(List<String> content, String filter) {
         var filterItems = Arrays.stream(filter.split(","))
-                        .map(x -> x.trim())
-                        .collect(Collectors.toList());
+                .map(x -> x.trim())
+                .collect(Collectors.toList());
 
         return content.stream().filter(x ->
         {
