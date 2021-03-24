@@ -15,11 +15,24 @@ import org.springframework.stereotype.Component;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * By adding the @Component, Spring is able to detect the class and register it.
+ */
 @Component
 public class MainViewModel implements Initializable {
     private final StringProperty _filterText = new SimpleStringProperty("");
     private final ObservableList<String> _filteredData = FXCollections.observableArrayList();
-    // this dependency is based on an interface with its implementation defined as @Component
+
+    /**
+     * These are the dependencies. They are based on interfaces with their implementations defined as @Components
+     *
+     * Spring will automatically assign ("inject") the registered instances to @Autowired elements when instantiating
+     * the MainViewModel. In our case this will be the single CommandLineArgumentHandler, HTTPOutputInterpreter,
+     * CsvBasedFilter, and CommandLineArgumentHandler.
+     *
+     * Note that in this class there is no other way to provide these dependencies (e.g. via a constructor)! As such it
+     * can only be properly instantiated and configured via Spring.
+     */
     @Autowired
     private CommunicationHandler _comHandler;
     @Autowired

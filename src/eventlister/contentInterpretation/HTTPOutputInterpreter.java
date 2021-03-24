@@ -8,6 +8,9 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * By adding the @Component, Spring is able to detect the class and register it.
+ */
 @Component
 public class HTTPOutputInterpreter implements ContentInterpreter {
 
@@ -16,6 +19,7 @@ public class HTTPOutputInterpreter implements ContentInterpreter {
     @Override
     public List<String> Interpret(String content) {
 
+        // maybe this should check whether the content has changed before returning cached results
         if (cachedOutput != null) {
             return cachedOutput;
         }
